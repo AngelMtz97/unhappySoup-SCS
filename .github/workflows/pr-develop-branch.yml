@@ -63,12 +63,11 @@ jobs:
           PR_BODY: ${{github.event.pull_request.body}}
         run: |
           
-          echo "$PWD"
           echo *
-          FILE=../../parsePR.js
-          if test -f "$FILE"; then
+          FILE="$PWD/parsePR.js"
+          if [[ -f "$FILE" ]]; then
               echo $PR_BODY > ./pr_body.txt
-              node ../../parsePR.js           
+              node "$PWD/parsePR.js"         
               TESTS=$(cat testsToRun.txt)
               echo "APEX_TESTS=$TESTS" >> $GITHUB_ENV
               echo "$TESTS"     
