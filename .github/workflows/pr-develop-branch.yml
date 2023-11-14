@@ -44,7 +44,7 @@ jobs:
         run: >
           mkdir changed-sources
 
-          sf sgd:source:delta --to "HEAD" --from "HEAD^" --output changed-sources/ --generate-delta --source force-app/
+          sf sgd source delta --to "HEAD" --from "HEAD^" --output changed-sources/ --generate-delta --source force-app/
       - name: Installing java
         run: sudo apt-get update && sudo apt-get install default-jdk
       - name: Installing SFDX scanner
@@ -65,7 +65,7 @@ jobs:
           
           echo *
           FILE="$PWD/parsePR.js"
-          if [[ -f "$FILE" ]]; then
+          if [[ -e "$FILE" ]]; then
               echo $PR_BODY > ./pr_body.txt
               node "$PWD/parsePR.js"         
               TESTS=$(cat testsToRun.txt)
