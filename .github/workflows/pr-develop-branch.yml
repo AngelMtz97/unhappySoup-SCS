@@ -68,20 +68,22 @@ jobs:
               echo $PR_BODY > ./pr_body.txt
               node ./parsePR.js              
               TESTS=$(cat testsToRun.txt)
-              echo "APEX_TESTS=$TESTS" >> $GITHUB_ENV     
+              echo "APEX_TESTS=$TESTS" >> $GITHUB_ENV
+              echo $APEX_TESTS     
           else
               TESTS=all
-              echo "APEX_TESTS=$TESTS" >> $GITHUB_ENV 
+              echo "APEX_TESTS=$TESTS" >> $GITHUB_ENV
+              echo $APEX_TESTS 
           fi
       - name: Deployment - run specified tests
         if: ${{ env.APEX_TESTS != 'all' }}
         run: >
           echo ${{env.APEX_TESTS}}
 
-          sf project deploy start -d "changed-sources/force-app/" --dry-run --test-level RunSpecifiedTests --tests ${{env.APEX_TESTS}} --json
+          sf project deploy start -d "changed-sources/force-app/" --dry-run --test-level RunSpecifiedTests  --target-org targetOrg --tests ${{env.APEX_TESTS}} --json
       - name: Deployment - run all tests
         if: ${{ env.APEX_TESTS == 'all' }}
         run: >
           echo ${{env.APEX_TESTS}}
 
-           sf project deploy start -d "changed-sources/force-app/" --dry-run --test-level RunLocalTests --json
+           sf project deploy start -d "changed-sources/force-app/" --dry-run --test-level RunLocalTests --target-org targetOrg --json
