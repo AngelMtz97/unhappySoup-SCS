@@ -74,7 +74,7 @@ jobs:
             TESTS=$(cat testsToRun.txt)
             echo "APEX_TESTS=$TESTS" >> $GITHUB_ENV
             echo "$TESTS"
-      - name: Read PR Body all tests
+      - name: Run all tests
         if: steps.check_files.outputs.files_exists == 'false'
         run: |
               TESTS=all
