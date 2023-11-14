@@ -15,6 +15,5 @@ public class Voldemort_Test {
 	public static void testThat() {
 		Account a = new Account(Name = 'Invalid Name');
 		insert a;
-		System.debug('Cuenta creada');
 	}
 }
