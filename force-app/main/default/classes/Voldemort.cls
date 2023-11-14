@@ -5,8 +5,7 @@ global class Voldemort {
 	public Decimal Weight;
 	public String nick_name;
 	public Boolean isBad = true;
-
-
+    
 	// CONSTRUCTORS
 
 	public Voldemort() {

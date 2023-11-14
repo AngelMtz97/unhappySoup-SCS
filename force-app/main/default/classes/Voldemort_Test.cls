@@ -8,6 +8,7 @@ public class Voldemort_Test {
 
 		Account inserted = [SELECT Id FROM Account];
 		System.assertNotEquals(a.Id, inserted.Id);
+        
 	}
 
 	@IsTest
