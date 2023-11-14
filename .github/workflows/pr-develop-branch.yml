@@ -64,6 +64,7 @@ jobs:
         run: |
           
           echo "$PWD"
+          echo *
           FILE=../../parsePR.js
           if test -f "$FILE"; then
               echo $PR_BODY > ./pr_body.txt
