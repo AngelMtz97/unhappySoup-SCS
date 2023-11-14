@@ -58,24 +58,28 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: changed-sources/apexScanResults.sarif
-      - name: Read PR Body
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@v2
+        with: 
+          files: "parsePR.js"
+      - name: Read PR Body specific tests
         env:
           PR_BODY: ${{github.event.pull_request.body}}
+        if: steps.check_files.outputs.files_exists == 'true'
         run: |
-          
-          echo *
-          FILE="$PWD/parsePR.js"
-          if [[ -e "$FILE" ]]; then
-              echo $PR_BODY > ./pr_body.txt
-              node "$PWD/parsePR.js"         
-              TESTS=$(cat testsToRun.txt)
-              echo "APEX_TESTS=$TESTS" >> $GITHUB_ENV
-              echo "$TESTS"     
-          else
+
+            echo $PR_BODY > ./pr_body.txt
+            node ./parsePR.js         
+            TESTS=$(cat testsToRun.txt)
+            echo "APEX_TESTS=$TESTS" >> $GITHUB_ENV
+            echo "$TESTS"
+      - name: Read PR Body all tests
+        if: steps.check_files.outputs.files_exists == 'false'
+        run: |
               TESTS=all
               echo "APEX_TESTS=$TESTS" >> $GITHUB_ENV
-              echo "$TESTS" 
-          fi
+              echo "$TESTS"
       - name: Deployment - run specified tests
         if: ${{ env.APEX_TESTS != 'all' }}
         run: >
