@@ -25,7 +25,6 @@ global class Voldemort {
 		System.debug(LoggingLevel.ERROR, 'Allowed');
 	}
 
-
 	public static Blob badCrypo(String secret) {
 		Blob iv = Blob.valueOf('NameOfMyDog');
 		Blob key = Blob.valueOf('21353we45242');
