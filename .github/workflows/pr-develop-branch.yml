@@ -63,6 +63,7 @@ jobs:
           PR_BODY: ${{github.event.pull_request.body}}
         run: |
           
+          echo "$PWD"
           FILE=../../parsePR.js
           if test -f "$FILE"; then
               echo $PR_BODY > ./pr_body.txt
