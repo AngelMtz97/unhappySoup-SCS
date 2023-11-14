@@ -52,7 +52,7 @@ jobs:
       - name: Scan code
         run: sf scanner:run --format sarif --target 'changed-sources/**/(*.cls|*.trigger|*.js|*.html|*.page|*.cmp|*.component|*.apex|*.ts)'
           --category 'Design,Best Practices,Performance,Code Style,Security'
-          --outfile 'apexScanResults.sarif'
+          --outfile 'changed-sources/apexScanResults.sarif'
           --engine 'pmd,cpd,eslint-lwc,retire-js'
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
