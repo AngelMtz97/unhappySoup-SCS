@@ -604,7 +604,6 @@ global class Voldemort {
 		x++;
 		x++;
 		x++;
-		x++;
 		x++;		x++;
 		x++;
 		x++;
