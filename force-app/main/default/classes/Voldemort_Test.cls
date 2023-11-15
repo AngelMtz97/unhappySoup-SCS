@@ -10,6 +10,7 @@ public class Voldemort_Test {
 		System.assertNotEquals(a.Id, inserted.Id);
 		
 	}
+	
 
 	@IsTest
 	public static void testThat() {
