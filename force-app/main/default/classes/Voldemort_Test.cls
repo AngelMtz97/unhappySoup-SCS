@@ -5,7 +5,6 @@ public class Voldemort_Test {
 	public static void testThis() {
 	    Voldemort voldObj = new Voldemort();
 		Voldemort.incorrectDebugs();
-		Voldemort.badCrypo('This is a secret');
 		Voldemort.insecureEndpoint();
 		Voldemort.betterUseNamedCredential('username','password');
 		Voldemort.openRedirect();
