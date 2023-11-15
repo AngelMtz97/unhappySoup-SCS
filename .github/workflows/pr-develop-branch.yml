@@ -12,6 +12,9 @@ on:
 jobs:
   validate-deployment-when-pr-is-created:
     runs-on: ubuntu-latest
+    permissions:
+      # required for all workflows
+      security-events: write
     steps:
       - uses: actions/setup-node@v3
         with:
