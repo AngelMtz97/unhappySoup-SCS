@@ -2,7 +2,6 @@ const fs = require('fs');
 const readline = require('readline')
 
 async function extractTests(){
-
     //by default we specify that all tests should run
     let testsFile = __dirname+'/testsToRun.txt';
     await fs.promises.writeFile(testsFile,'all');
@@ -17,9 +16,8 @@ async function extractTests(){
         let upperLine = line.toUpperCase();
 
         //special delimeter for apex tests
-        if(upperLine.includes('testClasses::[') && upperLine.includes(']::testClasses')){
-
-            let tests = line.substring(8,line.length-7);
+        if(upperLine.includes('TESTCLASSES::[') && upperLine.includes(']::TESTCLASSES')){
+            let tests = line.substring(15,line.length-14);
             await fs.promises.writeFile(testsFile,tests);
             await fs.promises.appendFile(testsFile,'\n');
         }
