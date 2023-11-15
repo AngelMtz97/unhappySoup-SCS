@@ -53,7 +53,7 @@ jobs:
       - name: Scan code
         run: sfdx scanner:run --format sarif --target 'changed-sources/**/(*.cls|*.trigger|*.js|*.html|*.page|*.cmp|*.component|*.apex|*.ts)' --category 'Design,Best Practices,Performance,Code Style,Security' --outfile 'apexScanResults.sarif' --engine 'pmd,cpd,eslint-lwc,retire-js'
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v1
+        uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: changed-sources/apexScanResults.sarif
       - name: Read PR Body
@@ -61,6 +61,9 @@ jobs:
           PR_BODY: ${{github.event.pull_request.body}}
         run: |
           
+          for file in changed-sources/*; do
+              echo "$file"
+          done
           FILE=./parsePR.js 
           if test -f "$FILE"; then
               echo $PR_BODY > ./pr_body.txt
