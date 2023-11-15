@@ -61,7 +61,7 @@ jobs:
           PR_BODY: ${{github.event.pull_request.body}}
         run: |
           
-          for file in changed-sources/force-app/*; do
+          for file in changed-sources/force-app/main/default/*; do
               echo "$file"
           done
           FILE=./parsePR.js 
