@@ -51,7 +51,7 @@ jobs:
       - name: Installing SFDX scanner
         run: sfdx plugins:install @salesforce/sfdx-scanner
       - name: Scan code
-        run: sfdx scanner:run --format sarif --target 'changed-sources/**/(*.cls|*.trigger|*.js|*.html|*.page|*.cmp|*.component|*.apex|*.ts)' --category 'Design,Best Practices,Performance,Code Style,Security' --outfile 'changed-sources/apexScanResults.sarif' --engine 'pmd,cpd,eslint-lwc,retire-js'
+        run: sfdx scanner:run --format sarif --target 'changed-sources/**/(*.cls|*.trigger|*.js|*.html|*.page|*.cmp|*.component|*.apex|*.ts)' --category 'Design,Best Practices,Performance,Code Style,Security' --outfile 'apexScanResults.sarif' --engine 'pmd,cpd,eslint-lwc,retire-js'
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v1
         with:
