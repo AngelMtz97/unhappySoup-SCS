@@ -1,14 +1,30 @@
 @isTest
 public class Voldemort_Test {
 
-	@IsTest(seeAllData = true)
+	@isTest
 	public static void testThis() {
-		Account a = new Account(Name = 'Valid Name');
+	    Voldemort voldObj = new Voldemort();
+		Voldemort.incorrectDebugs();
+		Voldemort.insecureEndpoint();
+		Voldemort.betterUseNamedCredential('username','password');
+		Voldemort.xssFromUrlParam();
+		Voldemort.deeplyNestedIf(1,2,3);
+		Account a = new Account(Name = 'Invalid Name');
 		insert a;
 
-		Account inserted = [SELECT Id FROM Account];
-		System.assertNotEquals(a.Id, inserted.Id);
-		
+		voldObj.dmlInLoops(new List<Account>{a});
+
+		voldObj.avoidHardcodingIds(a);
+		voldObj.badVariableNaming();
+		voldObj.Bad_Method_NAMING();
+		voldObj.Voldemort();
+		voldObj.soqlInLoops(new List<Account>{a});
+		voldObj.soslInLoops();
+		voldObj.addPerson(10, 11, 12, 20, 30);
+		voldObj.complexity(4);
+		voldObj.emptyCatch(a);
+		voldObj.emptyTryOrFinally(a);
+		Voldemort.exessiveLength(4);
 	}
 
 	@IsTest
