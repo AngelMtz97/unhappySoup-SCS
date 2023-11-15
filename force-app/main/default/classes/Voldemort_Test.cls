@@ -7,11 +7,11 @@ public class Voldemort_Test {
 		Voldemort.incorrectDebugs();
 		Voldemort.insecureEndpoint();
 		Voldemort.betterUseNamedCredential('username','password');
-		Voldemort.soqlInjection('1234');
 		Voldemort.xssFromUrlParam();
 		Voldemort.deeplyNestedIf(1,2,3);
 		Account a = new Account(Name = 'Invalid Name');
 		insert a;
+		Voldemort.soqlInjection(a.Id);
 
 		voldObj.dmlInLoops(new List<Account>{a});
 
