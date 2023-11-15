@@ -10,7 +10,7 @@ on:
       - develop
       - main
 jobs:
-  validate-deployment-when-pr-is-created.:
+  validate-deployment-when-pr-is-created:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v3
