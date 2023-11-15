@@ -18,7 +18,6 @@ async function extractTests(){
 
         //special delimeter for apex tests
         if(upperLine.includes('TESTCLASSES::[') && upperLine.includes(']::TESTCLASSES')){
-
             let tests = line.substring(15,line.length-14);
             await fs.promises.writeFile(testsFile,tests);
             await fs.promises.appendFile(testsFile,'\n');
