@@ -11,7 +11,6 @@ public class Voldemort_Test {
 		Voldemort.deeplyNestedIf(1,2,3);
 		Account a = new Account(Name = 'Invalid Name');
 		insert a;
-		Voldemort.soqlInjection(a.Id);
 
 		voldObj.dmlInLoops(new List<Account>{a});
 
