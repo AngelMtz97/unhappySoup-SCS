@@ -2,7 +2,6 @@ const fs = require('fs');
 const readline = require('readline')
 
 async function extractTests(){
-
     //by default we specify that all tests should run
     let testsFile = __dirname+'/testsToRun.txt';
     await fs.promises.writeFile(testsFile,'all');
