@@ -10,7 +10,7 @@ public class Voldemort_Test {
 		System.assertNotEquals(a.Id, inserted.Id);
 		
 	}
-
+	
 	@IsTest
 	public static void testThat() {
 		Account a = new Account(Name = 'Invalid Name');
